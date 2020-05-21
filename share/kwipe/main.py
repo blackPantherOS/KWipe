@@ -353,7 +353,7 @@ class Thread(QtCore.QThread):
                             mbps = str(round(total_bytes_written / _MEGABYTE / (offset or 1), 1))
                             self.current_speed.emit(mbps)
                             self.current_eta.emit(eta)
-
+                            
                         else:
                             self.terminated = True
                             status_msg = self.tr('Only %s %% overwritten!') % (round(total_bytes_written / (self.size / 100), 2))

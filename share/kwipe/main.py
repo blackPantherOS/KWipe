@@ -49,7 +49,7 @@ class KWipe(QtWidgets.QMainWindow):
     
     def __init__(self):       
         QtWidgets.QMainWindow.__init__(self)
-        self.ui = uic.loadUi('../share/Ui/kwipe.ui', self)
+        self.ui = uic.loadUi('/usr/share/kwipe/Ui/kwipe.ui', self)
         
         # Start functions 
         self.check_permission()
@@ -228,13 +228,13 @@ class KWipe(QtWidgets.QMainWindow):
 
             for disk, parts in sorted(devices.items()):
                 model, size = self.get_partition_size(disk, sufix)
-                item = QtWidgets.QTreeWidgetItem([disk])
-                item.setIcon(0, QtGui.QIcon('./icons/hdd.png'))
+                item = QtWidgets.QTreeWidgetItem([disk+" - "+model+" ("+size+")"])
+                item.setIcon(0, QtGui.QIcon('../share/icons/hdd.png'))
                 item.setToolTip(0, self.tr('Model: %s \nDrive Size: %s') % (model, size))
 
                 for part in parts:
                     size = self.get_partition_size(part[0], sufix)[1]
-                    child = QtWidgets.QTreeWidgetItem([part[0]])
+                    child = QtWidgets.QTreeWidgetItem([part[0]+" - "+size])
                     child.setToolTip(0, self.tr('Partition Size: %s') % size)
                     item.addChild(child)
 
@@ -246,7 +246,9 @@ class KWipe(QtWidgets.QMainWindow):
         disks = {}
         device_list = subprocess.check_output(['lsblk -x NAME -o NAME,TYPE,MOUNTPOINT -p -r -n -e 11,1'], shell=True).decode().split('\n')
         for device in device_list:
+            print ("DEV:"+ device )
             if device:
+                #device = list(filter(None, device))
                 device = list(filter(None, device.split(' ')))
                 if device[1] == 'disk':
                     disks[device[0]] = []
@@ -259,10 +261,11 @@ class KWipe(QtWidgets.QMainWindow):
         return disks
 
     def get_partition_size(self, device, sufix=False):
+        #print ("GET SIZE")
         if sufix:
-            cmd = ['lsblk -o MODEL,SIZE -J %s' % device]
+            cmd = ['lsblk -o MODEL,SIZE -J %s' % device.split(' ')e]
         else:
-            cmd = ['lsblk -o MODEL,SIZE -b -J %s' % device]
+            cmd = ['lsblk -o MODEL,SIZE -b -J %s' % device.split(' ')]
         dev = json.loads(subprocess.check_output(cmd, shell=True))
         size = dev['blockdevices'][0]['size']
         model = dev['blockdevices'][0]['model']
@@ -348,12 +351,12 @@ class Thread(QtCore.QThread):
                             percent = int((total_bytes_written / self.size) * 100)
                             self.current_data.emit(percent)
 
-                            seconds = int((self.size - total_bytes_written) / (total_bytes_written / (offset or 1))) if total_bytes_written else 0
-                            eta = str(timedelta(seconds=seconds))
-                            mbps = str(round(total_bytes_written / _MEGABYTE / (offset or 1), 1))
-                            self.current_speed.emit(mbps)
-                            self.current_eta.emit(eta)
-                            
+                            if offset >= 1:
+                                eta = str(timedelta(seconds=int((self.size - total_bytes_written) / (total_bytes_written / offset))))
+                                mbps = str(round(total_bytes_written / _MEGABYTE / offset, 1))
+                                self.current_speed.emit(mbps)
+                                self.current_eta.emit(eta)
+
                         else:
                             self.terminated = True
                             status_msg = self.tr('Only %s %% overwritten!') % (round(total_bytes_written / (self.size / 100), 2))

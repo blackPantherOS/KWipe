@@ -349,7 +349,8 @@ class Thread(QtCore.QThread):
                             self.current_data.emit(percent)
 
                             if offset >= 1:
-                                eta = str(timedelta(seconds=int((self.size - total_bytes_written) / (total_bytes_written / offset))))
+                                seconds = int((self.size - total_bytes_written) / (total_bytes_written / (offset or 1)) if total_bytes_written else 0)
+                                eta = str(timedelta(seconds=seconds))
                                 mbps = str(round(total_bytes_written / _MEGABYTE / offset, 1))
                                 self.current_speed.emit(mbps)
                                 self.current_eta.emit(eta)

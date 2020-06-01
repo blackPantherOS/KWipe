@@ -49,7 +49,7 @@ class KWipe(QtWidgets.QMainWindow):
     
     def __init__(self):       
         QtWidgets.QMainWindow.__init__(self)
-        self.ui = uic.loadUi('/usr/share/kwipe/Ui/kwipe.ui', self)
+        self.ui = uic.loadUi('../share/kwipe/Ui/kwipe.ui', self)
         
         # Start functions 
         self.check_permission()
@@ -263,7 +263,7 @@ class KWipe(QtWidgets.QMainWindow):
     def get_partition_size(self, device, sufix=False):
         #print ("GET SIZE")
         if sufix:
-            cmd = ['lsblk -o MODEL,SIZE -J %s' % device.split(' ')e]
+            cmd = ['lsblk -o MODEL,SIZE -J %s' % device.split(' ')]
         else:
             cmd = ['lsblk -o MODEL,SIZE -b -J %s' % device.split(' ')]
         dev = json.loads(subprocess.check_output(cmd, shell=True))

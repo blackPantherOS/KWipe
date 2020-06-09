@@ -263,9 +263,9 @@ class KWipe(QtWidgets.QMainWindow):
     def get_partition_size(self, device, sufix=False):
         #print ("GET SIZE")
         if sufix:
-            cmd = ['lsblk -o MODEL,SIZE -J %s' % device.split(' ')]
+            cmd = ['lsblk -o MODEL,SIZE -J %s' % device]
         else:
-            cmd = ['lsblk -o MODEL,SIZE -b -J %s' % device.split(' ')]
+            cmd = ['lsblk -o MODEL,SIZE -b -J %s' % device]
         dev = json.loads(subprocess.check_output(cmd, shell=True))
         size = dev['blockdevices'][0]['size']
         model = dev['blockdevices'][0]['model']

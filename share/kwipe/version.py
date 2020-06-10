@@ -17,5 +17,5 @@
 #
 # Author(s): Fabian Di Milia <fabian.dimilia@gmail.com>
 
-VERSION = '2.2.6'
-URL = 'https://raw.githubusercontent.com/PyCoder/KWipe/master/RELEASE'
+VERSION = '2.3.0'
+URL = 'https://raw.githubusercontent.com/blackPantherOS/KWipe/master/RELEASE'

@@ -246,9 +246,8 @@ class KWipe(QtWidgets.QMainWindow):
         disks = {}
         device_list = subprocess.check_output(['lsblk -x NAME -o NAME,TYPE,MOUNTPOINT -p -r -n -e 11,1'], shell=True).decode().split('\n')
         for device in device_list:
-            print ("DEV:"+ device )
+            #print ("DEV:"+ device )
             if device:
-                #device = list(filter(None, device))
                 device = list(filter(None, device.split(' ')))
                 if device[1] == 'disk':
                     disks[device[0]] = []

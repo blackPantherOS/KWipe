@@ -36,7 +36,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../icons/erase.png</normaloff>../icons/erase.png</iconset>
+    <normaloff>../../icons/erase.png</normaloff>../../icons/erase.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>

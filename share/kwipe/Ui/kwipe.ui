@@ -15,13 +15,13 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../icons/erase.png</normaloff>../icons/erase.png</iconset>
+    <normaloff>../../icons/erase.png</normaloff>../../icons/erase.png</iconset>
   </property>
   <property name="toolButtonStyle">
    <enum>Qt::ToolButtonIconOnly</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>11</x>
@@ -194,7 +194,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>&amp;File</string>
+     <string>F&amp;ile</string>
     </property>
     <addaction name="action_close"/>
    </widget>
@@ -240,7 +240,7 @@
   <action name="action_close">
    <property name="icon">
     <iconset>
-     <normaloff>../icons/exit.png</normaloff>../icons/exit.png</iconset>
+     <normaloff>../../icons/exit.png</normaloff>../../icons/exit.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Exit</string>
@@ -249,7 +249,7 @@
   <action name="action_erase">
    <property name="icon">
     <iconset>
-     <normaloff>../icons/erase.png</normaloff>../icons/erase.png</iconset>
+     <normaloff>../../icons/erase.png</normaloff>../../icons/erase.png</iconset>
    </property>
    <property name="text">
     <string>Erase</string>
@@ -261,7 +261,7 @@
   <action name="action_refresh">
    <property name="icon">
     <iconset>
-     <normaloff>../icons/refresh.png</normaloff>../icons/refresh.png</iconset>
+     <normaloff>../../icons/refresh.png</normaloff>../../icons/refresh.png</iconset>
    </property>
    <property name="text">
     <string>refresh</string>
@@ -273,7 +273,7 @@
   <action name="action_cancel">
    <property name="icon">
     <iconset>
-     <normaloff>../icons/cancel.png</normaloff>../icons/cancel.png</iconset>
+     <normaloff>../../icons/cancel.png</normaloff>../../icons/cancel.png</iconset>
    </property>
    <property name="text">
     <string>cancel</string>
@@ -285,7 +285,7 @@
   <action name="action_clear">
    <property name="icon">
     <iconset>
-     <normaloff>../icons/clear.png</normaloff>../icons/clear.png</iconset>
+     <normaloff>../../icons/clear.png</normaloff>../../icons/clear.png</iconset>
    </property>
    <property name="text">
     <string>Clear</string>

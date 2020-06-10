@@ -143,3 +143,6 @@ Changed list to tuple for the algorithm part to save memory.
 
 2.3.0
 Redesigned & fixed for from blackPanther OS
+
+2.3.1
+Fixed icons path

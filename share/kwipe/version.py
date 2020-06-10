@@ -17,5 +17,5 @@
 #
 # Author(s): Fabian Di Milia <fabian.dimilia@gmail.com>
 
-VERSION = '2.3.0'
+VERSION = '2.3.1'
 URL = 'https://raw.githubusercontent.com/blackPantherOS/KWipe/master/RELEASE'
